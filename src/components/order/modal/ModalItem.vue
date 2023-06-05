@@ -1,6 +1,6 @@
 <template>
     <div v-if="!orderItems.length == 0">
-        <h1>{{ user.fname }}</h1>
+        <h1>{{ `${user.fname} ${user.sname} ${user.lname}` }}</h1>
         <div>
             <p v-for="item in orderItems" v-if="!orderItems.length == 0">{{ item }}</p>
             <p v-else>Нет заказов</p>
