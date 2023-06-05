@@ -13,7 +13,7 @@
 
 <script setup>
 
-import { onMounted, ref, watch } from 'vue';
+import { onMounted, ref, watchEffect } from 'vue';
 
 import { useStore } from 'vuex';
 
@@ -40,8 +40,8 @@ const selectItem = async() => {
         });
         console.log('add item');
     } else {
-        await store.dispatch('deleteOrderItem', orderItemId.value);
-        store.commit('deleteOrderItem', orderItemIndex.value)
+        await store.dispatch('deleteOrderItem', orderItemId.value)
+            .then(() => store.commit('deleteOrderItem', orderItemIndex.value));
         console.log('remove item');
     };
 };
@@ -58,7 +58,7 @@ const checkboxStatus = () => {
     });
 };
 
-watch(() => {
+watchEffect(() => {
     checkboxStatus();
 });
 

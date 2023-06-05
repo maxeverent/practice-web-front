@@ -38,7 +38,7 @@
             <template v-if="isSummaryTable">
                 <div class="select">
                     <span >Ответственный за заказ: {{ responsibleUser }}</span>
-                    <select v-model="selectedUserId" class="select-item">
+                    <select v-model="selectedUserId" class="select-item" id="user">
                         <option 
                             v-for="(user, index) in usersForSelect"
                             :key="index"
@@ -80,7 +80,7 @@ const props = defineProps({
 });
 
 const nowDate = computed(() => {;
-    return new Date().toISOString().slice(0,10).split('-').reverse().join('.');
+    return new Date().toLocaleString().slice(0,10).split('-').reverse().join('.');
 });
 
 const makeOrder = () => {

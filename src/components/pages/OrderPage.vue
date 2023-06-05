@@ -18,25 +18,17 @@ import CircleSpinner from 'vue-spinners/src/components/CircleSpinner.vue';
 
 import Table from '../table/Table.vue';
 
-import { computed, onMounted } from 'vue';
+import { computed, ref } from 'vue';
 import { useStore } from 'vuex';
 
 const store = useStore();
 
 const users = [{
-    id: 2,
-    fname: "Иванов",
-    sname: "Иван",
-    lname: "Иванович"
+    id: 1,
+    fname: "Петров",
+    sname: "Петр",
+    lname: "Петрович"
 }]; 
-
-onMounted( async () => {
-    await store.dispatch('getProd');
-    await store.dispatch('getOrder');
-    await store.dispatch('getCurrentOrder');
-    await store.dispatch('getUsersWhoOrdered');
-    await store.dispatch('getUsers');
-});
 
 const order = computed(() => {
     return store.getters.getOrder;

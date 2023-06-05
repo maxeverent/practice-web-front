@@ -1,5 +1,5 @@
 <template>
-    <div v-if="prods.length == 0 || order.legth == 0">
+    <div v-if="prods.length == 0">
         <CircleSpinner/>
     </div>
     <Table
@@ -18,18 +18,12 @@ import CircleSpinner from 'vue-spinners/src/components/CircleSpinner.vue';
 
 import Table from '../table/Table.vue';
 
-import { onMounted, computed } from 'vue';
+import { computed, onMounted } from 'vue';
 import { useStore } from 'vuex';
 
 const store = useStore();
 
-onMounted( async () => {
-    await store.dispatch('getProd');
-    await store.dispatch('getOrder');
-    await store.dispatch('getCurrentOrder');
-    await store.dispatch('getUsersWhoOrdered');
-    await store.dispatch('getUsers');
-});
+onMounted(async() => await store.dispatch('getUsersWhoOrdered'));
 
 const order = computed(() => {
     return store.getters.getOrder;

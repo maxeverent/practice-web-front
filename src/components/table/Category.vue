@@ -5,7 +5,7 @@
     <CatItem
         v-for="item in props.prod.items"
         :key="index"
-        :users="props.users" 
+        :users="users" 
         :item="item" 
         :order="order"
         :isSummaryTable="isSummaryTable"

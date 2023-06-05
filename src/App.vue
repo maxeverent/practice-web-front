@@ -16,7 +16,11 @@
 
 <script setup>
 
-import { ref, onMounted} from 'vue';
+import { ref, onMounted } from 'vue';
+
+import { useStore } from 'vuex';
+
+const store = useStore();
 
 const header = ref([
   {
@@ -33,9 +37,17 @@ const header = ref([
   },
 ]);
 
-onMounted(() => {
-  const nowDate = new Date().toISOString().slice(0,10).split('-').reverse();
-  header.value[1].name = nowDate.slice(0,2).join('.')
+const getNowDate = () => {
+  header.value[1].name = new Date().toLocaleString().slice(0,5).split('-').reverse().join('.');
+};
+
+onMounted(async() => {
+  getNowDate();
+  await store.dispatch('getProd');
+  await store.dispatch('getOrder');
+  await store.dispatch('getCurrentOrder');
+  await store.dispatch('getUsersWhoOrdered');
+  await store.dispatch('getUsers');
 });
 
 </script>

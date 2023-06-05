@@ -6,6 +6,14 @@ export const HTTP = axios.create({
 });
 
 export default {
+    getProd: async() => {
+        try {
+            const response = await HTTP.get('/parser/prod');
+            return response.data;
+        } catch(e) {
+            console.log(e);
+        }
+    },
     getUsers: async() => {
         try {
             const response = await HTTP.get('/users/get');
@@ -14,17 +22,17 @@ export default {
             console.log(e);
         }
     },
-    getProd: async() => {
+    getCurrentOrder: async() => {
         try {
-            const response = await HTTP.get('/get/prod');
+            const response = await HTTP.get('/current_order/info')
             return response.data;
         } catch(e) {
-            console.log(e);
+            console.log(e)
         }
     },
     getOrder: async() => {
         try {
-            const response = await HTTP.get('/order/items');
+            const response = await HTTP.get('/current_order/items');
             return response.data;
         } catch(e) {
             console.log(e);
@@ -32,14 +40,14 @@ export default {
     },
     deleteOrderItem: async(id) => {
         try {
-            await HTTP.delete('/order/deleteitem/' + id);
+            await HTTP.delete('/current_order/delete_item/' + id);
         } catch(e) {
             console.log(e)
         }
     },
     createOrderItem: async(data) => {
         try {
-            const response = await HTTP.post('/order/createitem', data);
+            const response = await HTTP.post('/current_order/create_item', data);
             return response.data;
         } catch(e) {
             console.log(e)
@@ -47,7 +55,7 @@ export default {
     },
     getAllOrders: async() => {
         try {
-            const response = await HTTP.get('/order/orders')
+            const response = await HTTP.get('/orders/get')
             return response.data;
         } catch(e) {
             console.log(e)
@@ -55,45 +63,7 @@ export default {
     },
     getOrderById: async(id) => {
         try {
-            const response = await HTTP.get('/order/items/' + id)
-            return response.data;
-        } catch(e) {
-            console.log(e)
-        }
-    },
-    getCurrentOrder: async() => {
-        try {
-            const response = await HTTP.get('/order/current')
-            return response.data;
-        } catch(e) {
-            console.log(e)
-        }
-    },
-    selectRespUser: async(id) => {
-        try {
-            const response = await HTTP.post('/order/selectrespuser/' + id)
-            return response.data;
-        } catch(e) {
-            console.log(e)
-        }
-    },
-    selectUser: async(id) => {
-        try {
-            await HTTP.post('/users/select/' + id)
-        } catch(e) {
-            console.log(e)
-        }
-    },
-    removeUser: async(id) => {
-        try {
-            await HTTP.post('/users/remove/' + id)
-        } catch(e) {
-            console.log(e)
-        }
-    },
-    makeOrder: async() => {
-        try {
-            const response = await HTTP.post('/order/make');
+            const response = await HTTP.get('/orders/items_by_id/' + id)
             return response.data;
         } catch(e) {
             console.log(e)
@@ -101,10 +71,26 @@ export default {
     },
     getUsersWhoOrdered: async() => {
         try {
-            const response = await HTTP.get('/order/users');
+            const response = await HTTP.get('/current_order/users');
             return response.data;
         } catch(e) {
             console.log(e)
         }
-    }
+    },
+    selectRespUser: async(id) => {
+        try {
+            const response = await HTTP.post('/current_order/responsible_user/' + id)
+            return response.data;
+        } catch(e) {
+            console.log(e)
+        }
+    },
+    makeOrder: async() => {
+        try {
+            const response = await HTTP.post('/current_order/create');
+            return response.data;
+        } catch(e) {
+            console.log(e)
+        }
+    },
 };

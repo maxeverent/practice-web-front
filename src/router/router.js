@@ -1,8 +1,8 @@
 import { createRouter, createWebHashHistory } from 'vue-router';
 
-import MainPage from '../components/pages/MainPage.vue';
-import OrdersPage from '../components/pages/OrdersPage.vue';
-import OrderPage from '../components/pages/OrderPage.vue';
+const MainPage = () => import('../components/pages/MainPage.vue');
+const OrderPage = () => import('../components/pages/OrderPage.vue');
+const OrdersPage = () => import('../components/pages/OrdersPage.vue');
 
 const router = createRouter({
     history: createWebHashHistory(),
