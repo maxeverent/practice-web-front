@@ -157,7 +157,7 @@ const orderItems = computed(() => {
 }
 
 .table-item-name {
-    width: 310px;
+    width: 360px;
     text-align: center;
 }
 
