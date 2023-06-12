@@ -1,6 +1,8 @@
 <template>
     <div class="cat-item">
-        <div class="cat-name" v-once>{{ props.item.name }}</div>
+        <div class="cat-name" v-once>
+            {{ correctedItemName }}
+        </div>
         <CheckBox 
             v-for="(user, index) in users"
             :key="index"
@@ -14,6 +16,7 @@
 
 <script setup>
 
+import { computed } from 'vue';
 import CheckBox from './Checkbox.vue'
 
 const props = defineProps({
@@ -21,6 +24,10 @@ const props = defineProps({
     users: Array,
     order: Array,
     isSummaryTable: Boolean
+});
+
+const correctedItemName = computed(() => {
+    return props.item.name.split(',').join(', '); 
 });
 
 </script>

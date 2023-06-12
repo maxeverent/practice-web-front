@@ -24,10 +24,10 @@ import { useStore } from 'vuex';
 const store = useStore();
 
 const users = [{
-    id: 3,
-    fname: "Алексеев",
-    sname: "Алексей",
-    lname: "Алексеевич"
+    id: 1,
+    fname: "Петров",
+    sname: "Петр",
+    lname: "Петрович"
 }]; 
 
 const order = computed(() => {
