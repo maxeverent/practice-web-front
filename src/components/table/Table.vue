@@ -1,5 +1,5 @@
 <template>
-    <div class="table" :style="{width: 230*(users.length + 1) + 'px'}">
+    <div class="table" :style="{width: 350*(users.length) + 'px'}">
         <template v-if="isSummaryTable">
             <div class="table-date">
                 <span class="now-date">{{ "Меню на " + nowDate }}</span>
@@ -147,7 +147,7 @@ const orderItems = computed(() => {
 
 .table {
     height: auto;
-    min-width: 330px;
+    min-width: 550px;
     background-color: #fbfbfb;
     margin: 0 auto 0 auto;
     border: 0.15rem solid;
@@ -157,7 +157,7 @@ const orderItems = computed(() => {
 }
 
 .table-item-name {
-    width: 360px;
+    width: 350px;
     text-align: center;
 }
 

@@ -39,7 +39,7 @@ const correctedItemName = computed(() => {
 }
 
 .cat-name {
-    width: 380px;
+    width: 350px;
 }
 
 </style>
